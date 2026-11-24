@@ -5,7 +5,7 @@
 #include <cstdint>
 
 namespace {
-struct Point { int32_t x, y; };  // WGS84 microdegrees
+using Point = DistrictPoint;
 struct Ring {
     uint16_t first, count;
     int32_t west, east, south, north;
@@ -30,6 +30,11 @@ bool containsCircle(const Ring& ring, Point p, float radiusSquared) {
     }
     return inside;
 }
+}
+
+DistrictBoundary districtBoundary(int index) {
+    const Ring& ring=rings[index];
+    return {points+ring.first,ring.count};
 }
 
 int districtAt(double latitude,double longitude,double accuracyMetres) {
