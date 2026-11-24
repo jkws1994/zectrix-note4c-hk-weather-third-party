@@ -4,8 +4,16 @@ A third-party Hong Kong Observatory weather dashboard for the **ZECTRIX NOTE4C D
 
 | Version | What you can use |
 | --- | --- |
-| **Published beta · v0.1.0-beta.1** | English dashboard. Current weather is normally checked five minutes past each hour. While the board sleeps, tap the lower-right button to open setup. The release includes a merged firmware image, source archive and checksums. [Download the beta](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/tag/v0.1.0-beta.1) · [Beta installation, backup and build guide](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/blob/v0.1.0-beta.1/README.md) |
-| **Bilingual development build · 24 November 2026** | English and 繁體中文（香港）, 15-minute weather and warning checks, a redesigned local dashboard and an 18-district station map. The previews and controls below apply to this build. Its firmware and source have yet to be published on GitHub. |
+| **Bilingual release · v1.0.0** | English and 繁體中文（香港）, 15-minute weather and warning checks, and an 18-district station map. [Download the NOTE4C firmware](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/download/v1.0.0/NOTE4C-HK-Weather.bin) · [Source and checksums](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/tag/v1.0.0) |
+| **Earlier English beta · v0.1.0-beta.1** | English dashboard with hourly weather checks. [Earlier release and instructions](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/tag/v0.1.0-beta.1) |
+
+## Install the bilingual firmware
+
+Use the merged `NOTE4C-HK-Weather.bin` for the four-colour NOTE4C Dev Kit, PCB v1.0. Back up the full 16 MB flash first, then follow the NOTE4C updater instructions with a USB data cable and the merged image at **0x0000**. Keep the backup private because it may contain saved Wi-Fi credentials. [NOTE4C hardware and backup guide](https://wiki.zectrix.com/en/hardware/note4c/quick-start) · [ZECTRIX firmware updater](https://www.zectrix.com/en/firmware-updater.html)
+
+下載雙語韌體後，先備份裝置，再經 USB 刷寫。首次開機時，用手機連接螢幕顯示嘅 Wi-Fi 熱點，再開啟 `http://192.168.4.1`，揀 **繁體中文（香港）** 並儲存設定。[雙語韌體下載](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/download/v1.0.0/NOTE4C-HK-Weather.bin)
+
+For a local build, open the source folder containing `platformio.ini` and run `pio run -e note4c`. To verify the downloadable firmware and source archive on macOS, place both files and `SHA256SUMS.txt` in one folder and run `shasum -a 256 -c SHA256SUMS.txt`. [Source archive](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/download/v1.0.0/HKWeather-source.zip) · [SHA-256 checksums](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/download/v1.0.0/SHA256SUMS.txt)
 
 ## Bilingual build previews
 
@@ -21,16 +29,16 @@ The e-paper images come from the firmware’s 400 × 300 display buffer. The pho
 
 ## 手機設定同實體按鍵
 
-雙語開發版首次開機會顯示設定熱點。已經設定過嘅話，等裝置休眠，再長撳右下鍵約兩秒，就可以重新開啟設定。
+雙語版首次開機會顯示設定熱點。已經設定過嘅話，等裝置休眠，再長撳右下鍵約兩秒，就可以重新開啟設定。
 
-1. 用手機連接螢幕顯示嘅 **NOTE4C-…** 熱點，輸入螢幕上嘅密碼，再用瀏覽器開啟 **http://192.168.4.1**。
+1. 用手機連接螢幕顯示嘅 **NOTE4C-…** 熱點，輸入螢幕上嘅密碼，再用瀏覽器開啟 `http://192.168.4.1`。
 2. 撳頁頂嘅 **繁體中文（香港）**。喺清單揀一個 2.4 GHz Wi-Fi 網絡，或者揀 **沿用已儲存的 Wi-Fi**。如果搵唔到自己個網絡，可以撳 **重新搜尋**。
 3. 揀你想睇嘅地區，或者揀 **用 Wi-Fi 自動偵測地區**。撳 **連線並儲存** 或 **儲存設定**。裝置會記住你揀嘅語言，下次開機都會用返。
 4. 休眠時短撳右下鍵，可以喺本區天氣同十八區地圖之間切換。想睇警告詳情，就返去本區天氣頁。想即時查一次天氣同警告，就喺休眠時撳正面圓鍵。
 
 ## Phone setup and buttons
 
-Join the Wi-Fi hotspot shown on the panel and open **http://192.168.4.1**. Choose **English** or **繁體中文（香港）** at the top. Select a visible 2.4 GHz network from the scan list or keep your saved Wi-Fi. Choose a district or opt into automatic detection, then save. Changing languages in the browser preserves the selected district and the password already entered for a network that is still listed. Saving also applies the language to the e-paper display and future setup sessions.
+Join the Wi-Fi hotspot shown on the panel and open `http://192.168.4.1`. Choose **English** or **繁體中文（香港）** at the top. Select a visible 2.4 GHz network from the scan list or keep your saved Wi-Fi. Choose a district or opt into automatic detection, then save. Changing languages in the browser preserves the selected district and the password already entered for a network that is still listed. Saving also applies the language to the e-paper display and future setup sessions.
 
 | Button | Action in the bilingual build |
 | --- | --- |
