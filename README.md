@@ -10,6 +10,20 @@ ZECTRIX NOTE4C Dev Kit, PCB v1.0, ESP32-S3 N16R8, 400 × 300 SSD2683 four-colour
 **Getting started**  
 Download `NOTE4C-HK-Weather.bin` from the repository’s Releases section and follow the installation steps below. Set up Wi-Fi from your phone, then choose a district or opt in to Wi-Fi-based district detection. Once configured, the board wakes to check the weather and returns to deep sleep.
 
+## Development update · 24 November 2026
+
+The [published beta, v0.1.0-beta.1](https://github.com/jkws1994/zectrix-note4c-hk-weather-third-party/releases/tag/v0.1.0-beta.1), checks current weather hourly. The installation steps, button controls and refresh schedule below apply to that download. The following features have been tested in a newer, unreleased development build.
+
+| Feature | Behaviour in the development build |
+| --- | --- |
+| 18-district map | Tap the lower-right button while the board sleeps to switch between the local dashboard and a labelled Hong Kong map. The map highlights the selected district and lists each district’s representative HKO station temperature. Hold the same button for about two seconds to open Wi-Fi setup. |
+| Weather and battery | The board checks current weather, HKO warnings and battery level at 05, 20, 35 and 50 minutes past each hour in Hong Kong. The observation time on screen comes from HKO and can stay the same across checks. |
+| Weather warnings | Active Hong Kong Observatory warnings appear in red on both pages. If a check fails, the display identifies previously received warnings as last known. The front button requests an immediate check while the board sleeps. For urgent updates, consult [HKO’s current warnings](https://www.hko.gov.hk/en/wxinfo/dailywx/wxwarntoday.htm). |
+
+**Verification.** A clean ESP32-S3 build reproduced the development firmware byte for byte. The parser read all 18 district temperatures, three forecast days and the warning summary from live HKO feeds. Host tests covered 96 scheduled weather and warning checks over a simulated day, page switching, cached readings, clock recovery and battery calculations. The hardware review matched the display interface, power latch and wake pins to the [NOTE4C PCB v1.0 guide](https://wiki.zectrix.com/en/hardware/note4c/quick-start).
+
+**Still to test on a physical NOTE4C.** Panel refresh, button wake, battery readings and continued operation after unplugging USB need confirmation on the device. In particularly dense Wi-Fi scans, automatic district detection can overlook access points after the first 256. A district can also be selected manually.
+
 ## Install the compiled firmware
 
 1. Confirm the model says **NOTE4C**. Connect the board with a USB data cable.
